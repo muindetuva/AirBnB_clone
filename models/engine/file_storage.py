@@ -4,6 +4,7 @@ Contains the file storage class
 '''
 import json
 import os
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -26,7 +27,7 @@ class FileStorage:
         '''
         Adds to __objects a new object
         '''
-        key = obj.__class__.__name__ + str(obj.id)
+        key = obj.__class__.__name__ + "." + str(obj.id)
         FileStorage.__objects[key] = obj
 
     def save(self):
@@ -47,4 +48,7 @@ class FileStorage:
         '''
         if os.path.isfile(FileStorage.__file_path):
             with open(FileStorage.__file_path, mode="r",encoding="utf-8") as f:
-                FileStorage.__objects = json.loads(f.read())
+                json_dict = json.load(f)
+                for obj_dict in json_dict.values():
+                    class_name = obj_dict["__class__"]
+                    self.new( eval(class_name)(**obj_dict))
