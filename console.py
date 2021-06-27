@@ -2,8 +2,6 @@
 """
 Contains comand line interpreter
 """
-import inspect, sys
-from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models.__init__ import storage
 import cmd
@@ -11,8 +9,8 @@ import cmd
 
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
+    __classes = ["BaseModel"]
 
-    __classes =["BaseModel"]
     def do_quit(self, args):
             raise SystemExit
 
@@ -22,6 +20,7 @@ class HBNBCommand(cmd.Cmd):
     def help_quit(self):
         print("Quit command to exit the program")
         print()
+
     def emptyline(self):
         pass
 
@@ -36,34 +35,82 @@ class HBNBCommand(cmd.Cmd):
             print(model_1.id)
 
     def do_show(self, arg):
-        arg_list = arg.split()
-        if len(arg_list) >= 1:
-            obj = arg_list[0]
-        else:
-            raise Exception("** Class name is missing **")
-        if len(arg_list) >= 2:
-            id = arg_list[1]
-        else:
-            raise Exception("** instance id missing **")
-
-        if obj is None:
+        args = arg.split()
+        # Check if the class name has been passed and whether it exists
+        try:
+            obj = args[0]
+            if obj not in HBNBCommand.__classes:
+                print("** class doesn't exist **")
+                return
+        except:
             print("** class name missing **")
-        elif id is None:
-            print("** instance id missing **")
-        elif obj not in HBNBCommand.__classes:
-            print("** class doesn't exist **")
-        else:
-            key = obj + "." + str(id)
-            new_dict = storage.all()
-#            new_obj = FileStorage()
- #           new_dict = new_obj.all()
-            try:
-                  print(new_dict[key])
-            except Exception as e:
-                  print("** no instance found **")
+            return
 
+        try:
+            id = args[1]
+        except:
+            print("** instance id missing **")
+            return
+
+        key = obj + "." + str(id)
+        new_dict = storage.all()
+
+        try:
+            print(new_dict[key])
+        except Exception as e:
+            print("** no instance found **")
+
+    def do_destroy(self, arg):
+        '''
+        Destroys an Object
+        '''
+        args = arg.split()
+        # Check if the class name has been passed and whether it exists
+        try:
+            obj = args[0]
+            if obj not in HBNBCommand.__classes:
+                print("** class doesn't exist **")
+                return
+        except:
+            print("** class name missing **")
+            return
+
+        try:
+            id = args[1]
+        except:
+            print("** instance id missing **")
+            return
+
+        key = obj + "." + str(id)
+        stored_objs = storage.all()
+
+        try:
+            del(stored_objs[key])
+            storage.save()
+        except Exception as e:
+            print("** no instance found **")
+
+    def do_all(self, arg):
+        '''
+        Prints all string representation of all instances based or not on
+        the class name.
+        '''
+        obj_dict = storage.all()
+        obj_list = []
+        if not arg:
+            for obj in obj_dict.values():
+                obj_list.append(str(obj))
+            print(obj_list)
+        else:
+            if arg not in HBNBCommand.__classes:
+                print("** class doesn't exis **")
+            else:
+                for k, obj in obj_dict.items():
+                    if arg in k:
+                        obj_list.append(str(obj))
+                print(obj_list)
 
     help_EOF = help_quit
 
-if __name__== '__main__':
+if __name__ == '__main__':
     HBNBCommand().cmdloop()

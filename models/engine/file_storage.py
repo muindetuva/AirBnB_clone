@@ -34,7 +34,7 @@ class FileStorage:
         '''
         serializes __objects to the JSON file (path: __file_path)
         '''
-        #serialize the dictionary
+        # serialize the dictionary
         json_dict = {}
         for k, obj in FileStorage.__objects.items():
             json_dict[k] = obj.to_dict()
@@ -47,7 +47,7 @@ class FileStorage:
         deserializes the JSON file to __objects
         '''
         if os.path.isfile(FileStorage.__file_path):
-            with open(FileStorage.__file_path, mode="r",encoding="utf-8") as f:
+            with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
                 json_dict = json.load(f)
                 for obj_dict in json_dict.values():
                     class_name = obj_dict["__class__"]
