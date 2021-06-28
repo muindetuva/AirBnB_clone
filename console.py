@@ -3,13 +3,14 @@
 Contains comand line interpreter
 """
 from models.base_model import BaseModel
+from models.user import User
 from models.__init__ import storage
 import cmd
 
 
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
-    __classes = ["BaseModel"]
+    __classes = {"BaseModel": BaseModel, "User": User}
     # This is a dictionary of attributes and their values so that we can
     # properly parse them during the upda
     __types = {"age": int}
@@ -33,7 +34,7 @@ class HBNBCommand(cmd.Cmd):
         elif arg not in HBNBCommand.__classes:
             print("** class does not exist **")
         else:
-            model_1 = BaseModel()
+            model_1 = HBNBCommand.__classes[arg]()
             model_1.save()
             print(model_1.id)
 
