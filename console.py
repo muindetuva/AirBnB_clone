@@ -10,6 +10,9 @@ import cmd
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     __classes = ["BaseModel"]
+    # This is a dictionary of attributes and their values so that we can
+    # properly parse them during the upda
+    __types = {"age": int}
 
     def do_quit(self, args):
             raise SystemExit
@@ -143,15 +146,15 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
             return
 
+        # Properly parse the value
+        if "\"" in value:
+            value = value[1:-1]
+        else:
+            value = HBNBCommand.__types[attribute](value)
+
         obj = storage.all()[key]
-        print(obj)
-        print("#" * 10)
-        setattr(obj, attribute, str(value))
-        print(obj)
-    
-
-        
-
+        setattr(obj, attribute, value)
+        obj.save()
 
     help_EOF = help_quit
 
