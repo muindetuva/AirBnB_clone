@@ -14,6 +14,22 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
+    '''
+    HBNBCommand - class containing functions and attributes of the console
+    Attributes:
+             prompt - The string to be displayed as the prompt
+             __classes - Contains a dictionary of all classes
+             __types - contains a dictionary of attributes and their values
+                      to be abe to parse rge during the update method
+    Methods:
+            do_quit() - implements quit command
+            do_EOF() - Takes care of EOF in the command buffer
+            emptyline - Method called when an empty line is entered in
+                       response to the prompt.
+                       If this method is not overridden,
+                       it repeats the last nonempty command entered.
+
+    '''
     prompt = "(hbnb) "
     __classes = {
                'BaseModel': BaseModel, 'User': User, 'Place': Place,
@@ -29,19 +45,37 @@ class HBNBCommand(cmd.Cmd):
             }
 
     def do_quit(self, args):
-            raise SystemExit
+        '''
+        Implements quit command
+        Args:
+            args - string containing arguments
+        '''
+        raise SystemExit
 
     def do_EOF(self, args):
+        '''
+        do_EOF() - Takes care of EOF in the command buffer
+        Args:
+           args - stream from the standard input
+        '''
         return True
-
-    def help_quit(self):
         print("Quit command to exit the program")
         print()
 
     def emptyline(self):
+        '''
+         emptyline - Method called when an empty line is entered in
+                       response to the prompt.
+                    If this method is not overridden,
+                    it repeats the last nonempty command entered.
+        '''
         pass
 
     def do_create(self, arg):
+        '''
+        do_create - Creates a new instance of BaseModel and
+        saves it to Json file and prints the id
+        '''
         if not arg:
             print("** class name is missing **")
         elif arg not in HBNBCommand.__classes:
@@ -52,13 +86,21 @@ class HBNBCommand(cmd.Cmd):
             print(model_1.id)
 
     def do_show(self, arg):
+        '''
+        do__show - prints the string rep of an instance\
+        based on the class name and the id
+        '''
         args = arg.split()
-        # Check if the class name has been passed and whether it exists
+        '''
+        Check if the class name has\
+        been passed and whether it exists
+        '''
         try:
             obj = args[0]
             if obj not in HBNBCommand.__classes:
                 print("** class doesn't exist **")
                 return
+
         except:
             print("** class name missing **")
             return
@@ -79,7 +121,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         '''
-        Destroys an Object
+        do_destroy - Destroys an Object based on the class name and id
         '''
         args = arg.split()
         # Check if the class name has been passed and whether it exists
@@ -128,6 +170,10 @@ class HBNBCommand(cmd.Cmd):
                 print(obj_list)
 
     def do_update(self, arg):
+        '''
+        updates an instnace based on the class na,e and id by adding
+        or updating attribute(saving the chanege into JSON file
+        '''
         args = arg.split()
         try:
             class_name = args[0]
@@ -170,7 +216,47 @@ class HBNBCommand(cmd.Cmd):
         setattr(obj, attribute, value)
         obj.save()
 
-    help_EOF = help_quit
+        # Help functions
+        def help_create(self):
+            print("Creates a new instance of BaseModel,"
+                  "saves it (to the JSON file)and prints the id. Ex:"
+                  "$ create BaseModel")
+
+        def help_show(self):
+            print("show -  Prints the string representation of an instance\
+            based on the class name and id.\
+            Ex: $ show BaseModel 1234-1234-1234.")
+
+        def help_destroy(self):
+            print("destroy - Deletes an instance based on the class name and id\
+            (save the change into the JSON file).\
+            Ex: $ destroy BaseModel 1234-1234-1234.\
+    help_EOF = help_quit")
+
+        def help_all(self):
+            print("all - Prints all string representation of all instances\
+            based or not on the class name. Ex: $ all BaseModel or $ all.")
+
+        def help_update(self):
+            print(" Updates an instance based on the class name and id\
+            by adding or updating attribute\
+            (save the change into the JSON file).\
+            Ex: $ update BaseModel 1234-1234-1234\
+            email 'aibnb@holbertonschool.com'.")
+
+        def help_quit(self):
+            '''
+            Implements help for quit method
+            '''
+            print("Quit command to exit the program")
+            print()
+
+        def help_EOF(self):
+            '''
+            Implements help for quit method
+            '''
+            print("Quit command to exit the program")
+            print()
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
