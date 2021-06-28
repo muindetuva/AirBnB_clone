@@ -10,7 +10,11 @@ import cmd
 
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
-    __classes = {"BaseModel": BaseModel, "User": User}
+    __classes = {
+               'BaseModel': BaseModel, 'User': User, 'Place': Place,
+               'State': State, 'City': City, 'Amenity': Amenity,
+               'Review': Review
+              }
     # This is a dictionary of attributes and their values so that we can
     # properly parse them during the upda
     __types = {"age": int}
