@@ -12,6 +12,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.review import Review
 
+
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     __classes = {
@@ -20,8 +21,12 @@ class HBNBCommand(cmd.Cmd):
                'Review': Review
               }
     # This is a dictionary of attributes and their values so that we can
-    # properly parse them during the upda
-    __types = {"age": int}
+    # properly parse them during the update method
+    __types = {
+                "number_rooms": int, "number_bathrooms": int,
+                "max_guest": int, "price_by_night": int,
+                "latitude": float, "longitude": float
+            }
 
     def do_quit(self, args):
             raise SystemExit
