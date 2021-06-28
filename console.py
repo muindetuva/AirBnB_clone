@@ -3,13 +3,14 @@
 Contains comand line interpreter
 """
 from models.base_model import BaseModel
+from models.user import User
 from models.__init__ import storage
 import cmd
 
 
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
-    __classes = ["BaseModel"]
+    __classes = ["BaseModel", "User"]
     # This is a dictionary of attributes and their values so that we can
     # properly parse them during the upda
     __types = {"age": int}
