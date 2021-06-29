@@ -77,9 +77,9 @@ class HBNBCommand(cmd.Cmd):
         saves it to Json file and prints the id
         '''
         if not arg:
-            print("** class name is missing **")
+            print("** class name missing **")
         elif arg not in HBNBCommand.__classes:
-            print("** class does not exist **")
+            print("** class doesn't exist **")
         else:
             model_1 = HBNBCommand.__classes[arg]()
             model_1.save()
