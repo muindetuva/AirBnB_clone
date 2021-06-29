@@ -162,7 +162,7 @@ class HBNBCommand(cmd.Cmd):
             print(obj_list)
         else:
             if arg not in HBNBCommand.__classes:
-                print("** class doesn't exis **")
+                print("** class doesn't exist **")
             else:
                 for k, obj in obj_dict.items():
                     if arg in k:
