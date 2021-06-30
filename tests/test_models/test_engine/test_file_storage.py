@@ -7,6 +7,7 @@ from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 import os
 
+
 class TestFileStorage(unittest.TestCase):
     '''
     Unit tests for attributes and methods
@@ -62,7 +63,6 @@ class TestFileStorage(unittest.TestCase):
         self.assertTrue(type(self.storage1.all), dict)
         self.assertTrue(hasattr(self.storage1, '_FileStorage__file_path'))
 
-
     def test_private_attributes(self):
         '''
         tests for illegal access of private attributes
@@ -71,8 +71,6 @@ class TestFileStorage(unittest.TestCase):
         with self.assertRaises(AttributeError):
             FileStorage.__objects
             FileStorage.__file_path
-
-
 
     def test_all(self):
         '''
