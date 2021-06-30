@@ -235,7 +235,7 @@ class HBNBCommand(cmd.Cmd):
 
         def help_destroy(self):
             '''
-            Help for the destroy 
+            Help for the destroy
             '''
             print("destroy - Deletes an instance based on the class name and id\
             (save the change into the JSON file).\
