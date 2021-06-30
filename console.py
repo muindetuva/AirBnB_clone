@@ -218,26 +218,41 @@ class HBNBCommand(cmd.Cmd):
 
         # Help functions
         def help_create(self):
+            '''
+            Help for the create method
+            '''
             print("Creates a new instance of BaseModel,"
                   "saves it (to the JSON file)and prints the id. Ex:"
                   "$ create BaseModel")
 
         def help_show(self):
+            '''
+            Help for the show method
+            '''
             print("show -  Prints the string representation of an instance\
             based on the class name and id.\
             Ex: $ show BaseModel 1234-1234-1234.")
 
         def help_destroy(self):
+            '''
+            Help for the destroy 
+            '''
             print("destroy - Deletes an instance based on the class name and id\
             (save the change into the JSON file).\
             Ex: $ destroy BaseModel 1234-1234-1234.\
     help_EOF = help_quit")
 
         def help_all(self):
+            '''
+            Help for the all method
+            '''
             print("all - Prints all string representation of all instances\
             based or not on the class name. Ex: $ all BaseModel or $ all.")
 
         def help_update(self):
+            '''
+            Help for the update method
+            '''
             print(" Updates an instance based on the class name and id\
             by adding or updating attribute\
             (save the change into the JSON file).\
