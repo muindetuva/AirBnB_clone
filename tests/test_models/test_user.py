@@ -51,6 +51,14 @@ class TestUser(unittest.TestCase):
         self.assertTrue(hasattr(User, 'first_name'))
         self.assertTrue(hasattr(User, 'last_name'))
 
+    def test_attribute_types(self):
+        """Test whether the class attributes are of the right type"""
+        user_1 = User()
+        self.assertIsInstance(user_1.email, str)
+        self.assertIsInstance(user_1.password, str)
+        self.assertIsInstance(user_1.first_name, str)
+        self.assertIsInstance(user_1.last_name, str)
+
     def test_isinstance(self):
         '''
         Check that the created instance is an instance of the BaseModel class
