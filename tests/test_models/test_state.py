@@ -1,16 +1,16 @@
 #!/usr/bin/python3
 '''
-Contains all tests for the base_model class
+Contains all tests for the State class
 '''
 from models.base_model import BaseModel
-from models.amenity import Amenity
+from models.state import State
 import unittest
 import os
 
 
-class TestAmenity(unittest.TestCase):
+class TestState(unittest.TestCase):
     '''
-    Tests that the BaseModel works okay
+    Tests that the State works okay
     '''
     def setUp(self):
         '''
@@ -20,8 +20,8 @@ class TestAmenity(unittest.TestCase):
         if os.path.isfile("file.json"):
             os.rename("file.json", "backup_file.json")
 
-        self.model_1 = Amenity()
-        self.model_2 = Amenity()
+        self.model_1 = State()
+        self.model_2 = State()
 
     def tearDown(self):
         '''
@@ -40,20 +40,20 @@ class TestAmenity(unittest.TestCase):
         '''
         Test that all attributes are of the correct type
         '''
-        self.assertTrue(type(self.model_1), BaseModel)
+        self.assertTrue(type(self.model_1), State)
         self.assertTrue(type(self.model_1.name), str)
 
     def test_attributes_exist(self):
         '''
         Test that class Amenity has the required attributes and methods
         '''
-        self.assertTrue(hasattr(Amenity, 'name'))
+        self.assertTrue(hasattr(State, 'name'))
 
     def test_isinstance(self):
         '''
         Check that the created instance is an instance of the BaseModel class
         '''
-        self.assertIsInstance(self.model_1, BaseModel)
+        self.assertIsInstance(self.model_1, State)
 
     def test_is_subclass(self):
         '''
