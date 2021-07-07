@@ -40,7 +40,9 @@ class TestReview(unittest.TestCase):
         '''
         Test that all attributes are of the correct type
         '''
-        self.assertTrue(type(self.model_1), BaseModel)
+        self.assertIsInstance(self.model_1.place_id, str)
+        self.assertIsInstance(self.model_1.user_id, str)
+        self.assertIsInstance(self.model_1.text, str)
 
     def test_attributes_exist(self):
         '''
