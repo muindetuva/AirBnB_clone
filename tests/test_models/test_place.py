@@ -40,8 +40,17 @@ class TestPlace(unittest.TestCase):
         '''
         Test that all attributes are of the correct type
         '''
-        self.assertTrue(type(self.model_1), BaseModel)
-        self.assertTrue(type(self.model_1.name), str)
+        self.assertIsInstance(self.model_1.name, str)
+        self.assertIsInstance(self.model_1.city_id, str)
+        self.assertIsInstance(self.model_1.user_id, str)
+        self.assertIsInstance(self.model_1.description, str)
+        self.assertIsInstance(self.model_1.number_rooms, int)
+        self.assertIsInstance(self.model_1.number_bathrooms, int)
+        self.assertIsInstance(self.model_1.max_guest, int)
+        self.assertIsInstance(self.model_1.price_by_night, int)
+        self.assertIsInstance(self.model_1.latitude, float)
+        self.assertIsInstance(self.model_1.longitude, float)
+        self.assertIsInstance(self.model_1.amenity_ids, list)
 
     def test_attributes_exist(self):
         '''
