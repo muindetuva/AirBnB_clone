@@ -40,8 +40,7 @@ class TestAmenity(unittest.TestCase):
         '''
         Test that all attributes are of the correct type
         '''
-        self.assertTrue(type(self.model_1), BaseModel)
-        self.assertTrue(type(self.model_1.name), str)
+        self.assertIsInstance(self.model_1.name, str)
 
     def test_attributes_exist(self):
         '''
