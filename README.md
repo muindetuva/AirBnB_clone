@@ -1,5 +1,5 @@
 # AirBnB Clone - The Console
-The console is the first segment of the AirBnB project at Holberton School that will collectively cover fundamental concepts of higher level programming.
+The console is the first segment of the AirBnB project at ALX-Holberton School that will collectively cover fundamental concepts of higher level programming.
 
 #### Functionalities of this command interpreter:
 * Create a new object (ex: a new User or a new Place)
