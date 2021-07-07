@@ -40,8 +40,7 @@ class TestState(unittest.TestCase):
         '''
         Test that all attributes are of the correct type
         '''
-        self.assertTrue(type(self.model_1), State)
-        self.assertTrue(type(self.model_1.name), str)
+        self.assertIsInstance(self.model_1.name, str)
 
     def test_attributes_exist(self):
         '''
