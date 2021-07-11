@@ -55,6 +55,7 @@
 	display: none;
 	background-color: #fafafa;
 	border: 1px #dddddd solid;
+	border-radius: 4px;
 	width: 100%;
 	box-sizing: border-box;
 	padding: 20px;
