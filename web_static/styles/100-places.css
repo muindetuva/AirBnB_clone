@@ -77,3 +77,59 @@
 .user span {
 	font-weight: bold;
 }
+
+
+/*
+ * Amenities
+ */
+.places .place_amenities,
+.places .reviews {
+	margin-top: 40px;
+}
+.places .place_amenities h2, 
+.places .reviews h2 {
+	font-size: 16px;
+	border-bottom: 1px #dddddd solid;
+	width: 100%;
+	text-align: left;
+	padding-bottom: 10px;
+}
+
+.places .place_amenities ul, 
+.places .reviews ul {
+	list-style: none;
+	padding-left: 0;
+}
+.places .reviews li {
+	margin-bottom: 5px;
+}
+
+.tv {
+	background-image: url("../images/icon_tv.png");
+}
+.wifi {
+	background-image: url("../images/icon_wifi.png");
+}
+.pets {
+	background-image: url("../images/icon_pets.png")
+}
+.tv,
+.wifi,
+.pets {
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.tv p,
+.wifi p,
+.pets p {
+	margin-left: 20px;
+}
+
+.places .reviews h3 {
+	margin-bottom: 0;
+	font-size: 14px;
+}
+.places .reviews p {
+	margin-top: 5px;
+	font-size: 12px;
+}
