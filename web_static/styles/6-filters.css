@@ -1,0 +1,75 @@
+/*
+ * ========================
+ * Filters Styles
+ * ========================
+ */
+.filters {
+	background-color: #ffffff;
+	height: 70px;
+	width: 100%;
+	border: 1px solid #dddddd;
+	border-radius: 4px;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+}
+.filters button {
+	font-size: 18px;
+	background-color: #ff5a5f;
+	color: #ffffff;
+	height: 48px;
+	width: 20%;
+	border: none;
+	border-radius: 4px;
+	order: 1;
+	position: absolute;
+	right: 30px;
+	top: 50%;
+	margin-top: -24px;
+}
+
+.filters button:hover {
+	opacity: 0.9;
+}
+
+.locations,
+.amenities {
+	height: 100%;
+	width: 25%;
+}
+.locations h3,
+.amenities h3 {
+	font-weight: 600;
+	margin: 10px 80px 10px 40px;
+}
+.locations h4,
+.amenities h4 {
+	font-weight: 400;
+	font-size: 14px;
+	margin: 10px 80px 10px 40px;
+}
+.filters div:nth-of-type(1) {
+	border-right: 1px #dddddd solid;
+}
+.popover {
+	display: none;
+	background-color: #fafafa;
+	border: 1px #dddddd solid;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 20px;
+}
+
+.popover,
+.popover ul {
+	list-style: none;
+}
+.filters div:hover .popover {
+	display: block;
+}
+.popover li {
+	margin-bottom: 5px;
+}
+.popover h2 {
+	margin: 10px 0 0 0;
+}
